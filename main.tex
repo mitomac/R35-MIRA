@@ -1,0 +1,391 @@
+\documentclass[11pt]{article}
+\renewcommand \thesection{\Alph{section}}
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+{-1.5ex \@plus -1ex \@minus -.2ex}%
+{1.5ex \@plus.2ex}%
+{\color{dukeblue}\sffamily\Large\bfseries}}
+\makeatother
+
+% Packages
+\usepackage[letterpaper,hmargin=0.5in,vmargin=0.5in]{geometry}
+\usepackage{mathpazo}
+\usepackage{amsmath}
+\usepackage[dvips]{graphicx}
+\usepackage{floatflt}
+\usepackage{color}
+\usepackage{boxedminipage}
+\usepackage{url}
+\usepackage{soul}
+\usepackage[numbers,super,comma,sort&compress]{natbib}
+\usepackage{multirow}
+\usepackage{xspace}
+\usepackage[scaled]{helvet}
+\usepackage[rightcaption]{sidecap}
+\usepackage{calc}
+
+%Pretty
+\definecolor{dukeblue}{rgb}{0.000,0.102,0.341} % hex triple is 001A57
+
+%\definecolor{light-gray}{gray}{0.3}
+%\definecolor{darkgray}{gray}{0.15}
+%\definecolor{duke}{rgb}{0,0,0.611}
+\definecolor{ourblue}{rgb}{0.00,0.15,0.55} % notably brighter than dukeblue (but all text must be black, so ditching this)
+
+\renewcommand{\labelitemi}{\color{dukeblue}$\bullet$}
+
+% Bibliography
+%\bibpunct[,]{~[}{]}{,}{n}{}{}
+% \bibliographystyle{alexunsrtabbrvnat}
+% \setlength\bibsep{1.8pt}
+% \renewcommand{\refname}{Literature~Cited}
+
+\newcommand{\captionfonts}{\sf \footnotesize \color{dukeblue}}
+\makeatletter % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+\vskip\abovecaptionskip
+	\sbox\@tempboxa{{\captionfonts #1. #2}}%
+	\ifdim \wd\@tempboxa >\hsize
+		{\captionfonts \textbf{#1.} #2\par}
+	\else
+		\hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+	\fi
+	\vskip\belowcaptionskip}
+\makeatother % Cancel the effect of \makeatletter
+\renewcommand{\figurename}{Figure}
+
+%\def\mycaptionsize{\footnotesize}
+\def\mycaptionsize{\small}
+
+\def\mycodesize{\footnotesize}
+\def\myeqnsize{\small}
+
+% Section Heading
+\newcounter{sheading}[section]
+\setcounter{sheading}{0}
+\newcounter{ssheading}[sheading]
+\setcounter{ssheading}{0}
+\newcounter{sssheading}[ssheading]
+\setcounter{sssheading}{0}
+
+\def\sheading#1{\medskip\noindent\refstepcounter{sheading}{\sffamily \color{dukeblue} \large \textbf{\Alph{section}.\arabic{sheading}\hspace{1em}#1}\medskip\setcounter{ssheading}{0}}\\}
+
+
+%\def\ssheading#1{\noindent\refstepcounter{ssheading}{\sffamily \color{dukeblue} \bfseries \textsl {\Alph{section}.\arabic{sheading}.\arabic{ssheading}\hspace{1em}#1}\hspace{.7em}}}
+
+\def\ssheading#1{\noindent\refstepcounter{ssheading}{\sffamily \color{dukeblue} \bfseries \textsl {#1}\hspace{.7em}}}
+
+\linespread{1.00}
+\def\degree{$^\circ$}
+\def\R{\mathbb{R}}
+\def\CR{\hspace{0pt}} % ``invisible'' space for line break
+\newcommand\myrefa[2]{\ref{#1}.\ref{#2}}
+\newcommand\myrefb[3]{\ref{#1}.\ref{#2}.\ref{#3}}
+\newcommand\myrefc[4]{\ref{#1}.\ref{#2}.\ref{#3}.\ref{#4}}
+
+% Biological Abbreviations
+\newcommand\dros{{\itshape Drosophila}\xspace}
+\newcommand\dmel{{\itshape D.~melanogaster}\xspace}
+\newcommand\scer{{\itshape S.~cerevisiae}\xspace}
+\newcommand\saccer{{\itshape Saccharomyces cerevisiae}\xspace}
+\newcommand\xenopus{{\itshape Xenopus}\xspace}
+\newcommand\invitro{{\itshape in~vitro}\xspace}
+\newcommand\invivo{{\itshape in~vivo}\xspace}
+\newcommand\ten[1]{$\times$10$^{#1}$}
+\newcommand\panc{Panc\dash1\xspace}
+\newcommand\orcmt{\emph{orc1\dash 161}\xspace}
+
+% Other Abbreviations
+\newcommand\eg{\emph{e.g.}\xspace}
+\newcommand\dash{\nobreakdash-\hspace{0pt}}
+
+\def\be{\begin{enumerate}} % Begin Enumerate
+\def\ee{\end{enumerate}} % End Enumerate
+\def\en{\item} % Entry (item)
+\def\bi{\begin{itemize}} % Begin Itemize
+\def\ei{\end{itemize}} % End Itemize
+\def\bv{\begin{verbatim}} % Begin Verbatim
+\def\ev{\end{verbatim}} % End Verbatim
+\begin{document}
+\pagestyle{empty}
+\addtolength{\itemsep}{-5mm}
+\addtolength{\parskip}{1.5mm}
+\addtolength{\abovecaptionskip}{-10mm}
+%\setcounter{page}{21} % or whatever
+
+
+\section{Background}
+
+\section{Recent Research Progress}
+
+\sheading{Chromatin organization and DNA replication in \scer}
+The local chromatin environment mediates all DNA-templated processes.  Broad ...
+
+\ssheading{Chromatin architecture of replication origins}
+
+Start sites of DNA replication in \scer are defined by both cis- and trans-acting factors.  The  ACS (ARS consensus sequence) is a T-rich degenerate motif that occurs more than 10,000 times throughout the yeast genome\cite{}.  Despite the prevalence of high quality sequence matches to the ACS, fewer than 300 function as origins of DNA replication or interact with ORC\citep{}.  The specificity of ORC for only select ACS sites throughout the genome is likely mediated by the local chromatin structure.  In collaboration with Steve Henikoff, we have pioneered a micrococcal nuclease-based assay to 'footprint' the entire yeast genome.  
+
+This assay provides information about not only ORC but also the surrounding nucleosomes.
+
+G2, ORC alone and pre-RC assembly.  Ongoing work is identifying the ATP-dependent chromatn remodeler -- key advances in our understanding of nucleosomes around ORC -- but what about during initiation and assembly of the pre-IC complex.  Genetic approache mcm10 primase mutant, catalytically dead -- MCM ?[need to check with Tony]
+
+\ssheading{Asymmetric loading of the Mcm2-7 helicase}
+The Mcm2-7 double hexamer is loaded in two steps onto origin DNA.  Reitterative loading.  We found that the Mcm2-7 complex is loaded asymmetrically surrounding ORC binding sites in the yeast genome. Start with Abf1, ORC and then MCM2-7  Specifcally, we found that Mcm2-7 was in complex with either the up- or downstream-nucleosome flanking the origin of DNA replication.  The data are clear and not seen with Abf1 or ORC. Understanding the signficance of this association and the mechanism -- is of importance.  can try moving nucleosome
+
+
+\ssheading{Establishment of chromatin architecture behind the DNA replication fork}.  
+
+
+
+
+
+
+While the impact of chromatin architecture in establishing the replication program is clear, DNA replication also plays an integral role in propagating the parental epigenetic state to newly copied sequences.  DNA replication results in the complete dis-assembly of chromatin, which must be re-established behind the replication fork. Chromatin restoration on nascent DNA is a complex and regulated process, including nucleosome assembly, remodeling, and deposition of histone variants {Alabert, 2012 #12}.  Based on principles developed in i-pond, we have -- The key differences in our approach is that it truly allows us to view locus dependend differences in chromatin assembly.  at high resolution including TFs.  We believe that there is a hierarchy of assembly -- we will use this assay to address fundamental questions in epigenetic assembly.
+
+preliminary data...
+Figure 1.  ORC specific footprint
+Figure 2.  Nucleosome movement summary -- with and without ORC initation (cartoon
+Figure 3.  Asymmetric loading of the Mcm2-7 complex)[Cartoon] and consequences 
+
+\sheading{Establishment of the DNA replication program and maintenance of genome integrity in \dros}
+
+\ssheading{chromatin marks define origin plasticity in dros}
+
+\ssheading{Transcription shapes the dynamic distribution of Mcm2-7 in \dros}
+
+
+Figure 3..  
+
+
+Until recently, my research program has focused on the orchestrated changes in chromatin structure during ORC binding and pre-RC assembly. We have identified that wellpositioned nucleosmes are a hallmark of replication origins. blah blah blah.
+
+\sssheading{what is my third level} What does this look like.
+
+\ssheading{Establishment of chromatin architecture behind the DNA replication fork}
+We have recently made progress on a new assay to characterize nascent and mature chromatin.
+
+
+\sheading{Establishment of the DNA replication program and maintenance of genome integrity in \dros}
+
+
+\sheading{Transcription shapes the dynamic distribution of Mcm2-7 in \dros}
+
+%% This should be a comment
+
+
+
+
+\section{Overview of Future Research}
+
+\ssheading{Chromatin and initiation} Hypothesis orchestrated chromatin movements -- role of other factors etc.
+\ssheading{Chromatin assembly behind the DNA replication fork}
+\ssheading{Mcm work}
+
+\sheading{Other work}
+Hartemink -- 
+Haber -- DNA breaks Chromatin at DNA breaks
+
+\mcm redistribution in the fly.
+
+Chromatin assembly behind the replication fork
+remodeler mutants, etc
+lots of questions
+
+Mcm and histone interactions asymetric loading of the histone
+
+
+Chromatin on DNA-templated processes
+\sheading{Replication}
+\ssheading{Chromatin assembly}
+\
+
+
+\sheading{Transcription}
+Cell cycle -- This work will overtake our commitment with Hartemink laboratory to characterize big picture question of cell cycle regulation look inside black box.
+
+\sheading{Recombination and Repair}
+We have recently become interested in the chromatin events that precede and accompany DNA repair.  We 
+
+
+
+
+
+More than a quarter of surveyed pancreatic cancers exhibit loss of function mutations in the SWI/SNF ATP-dependent chromatin remodeling complex\citep{Shain2012}.  Given that SWI/SNF-dependent chromatin interactions potentially regulate thousands of diverse genes, it is important that we begin to understand the underlying cascade of chromatin-mediated changes that lead to altered transcription in pancreatic cancer.  We have recently developed an unbiased and comprehensive nucleotide-resolution assay (MNase epigenome mapping)  to `footprint' the chromatin occupancy (nucleosomes, DNA binding factors, and chromatin remodelers) of the \saccer genome~\citep{Henikoff2011}. We are now in a unique position to scale this exciting technology to the human genome with the ultimate goal of identifying functional perturbations in the chromatin landscape associated with SWI/SNF loss of function in pancreatic cancer. 
+%The ATP-dependent SWI/SNF remodeling complex is a bona fide tumor suppressor and subunits are frequently mutated in a diverse number of cancer types including malignant rhabdoid cancer, melanoma and pancreatic cancer~\citep{Timp2013,Shain2013,Rorke1996,Reisman2009,Roberts2004}.
+A comprehensive identification of chromatin perturbations associated with SWI/SNF loss of function will provide a foundation to not only link chromatin modulation with altered gene expression in pancreatic cancer, but also identify potential new regulatory factors and targets.
+ 
+This is an ambitious pilot study that will lay the groundwork for future studies to understand how perturbation of the epigenetic environment impacts tumorigenesis. We are currently focusing on SWI/SNF due to %the abundance of established reagents and
+its clear link to pancreatic cancer, but we expect our experimental and computational framework will extend to any number of epigenetic factors associated with any complex phenotype.
+ 
+\sheading{Generate SWI/SNF-dependent chromatin occupancy profiles of pancreatic cancer} We will scale MNase epigenome mapping to the human genome and comprehensively survey the chromatin landscape of the \panc cell line.  \panc cells harbor a frameshift mutation in the catalytic SMARCA4 subunit of SWI/SNF resulting in complete loss of SWI/SNF function.  SWI/SNF-dependent chromatin perturbations will be identified by the expression of wild type or, as a control, the catalytically dead SMARCA4\textsuperscript{K798R}  allele in \panc cells.  In parallel, we will also collect RNA-seq data to enable us to associate differences in gene expression with SWI/SNF-dependent changes in the chromatin landscape.  We expect to generate nucleotide-resolution chromatin occupancy profiles and transcriptome data that will allow us to identify regulatory DNA elements and DNA-binding factors dependent on SWI/SNF function in pancreatic cancer.
+
+\sheading{Identify regulatory elements with SWI/SNF-dependent altered chromatin occupancy} We will identify DNA regulatory elements and their associated DNA-binding factors (\eg, transcription factors) that are dependent on SWI/SNF function in \panc cells.  SWI/SNF-dependent regulatory elements will be identified by employing robust statistical methods to detect changes in chromatin occupancy between \panc cells rescued with wild type or mutant SMARCA4.   We expect to identify SWI/SNF-dependent changes in nucleosome positioning, as well as the locus-specific recruitment and eviction of DNA binding factors.  We will integrate our chromatin occupancy profiles with existing genome-wide data including: genome annotation, primary sequence (motifs), chromatin modifications, and mapped DNA binding proteins (ChIP) to infer the identity of specific DNA-binding factors with SWI/SNF-dependent chromatin occupancy.  Finally, we will directly link changes in SWI/SNF-dependent chromatin occupancy to altered gene expression which may lead to the discovery of novel regulatory elements and factors which may ultimately serve as future therapeutic targets. 
+
+\begin{center}
+\subsection*{\sffamily \color{dukeblue} Deliverables}
+\end{center}
+\begin{itemize}
+\addtolength{\itemsep}{-2mm}
+%\sffamily
+\item Nucleotide-resolution chromatin occupancy profiles for \panc cells with and without SWI/SNF function
+\item Identification of regulatory DNA elements with SWI/SNF-dependent chromatin configurations
+\item Identification of regulatory factors (\eg, transcription factors) whose DNA occupancy is impacted by SWI/SNF function
+\item Integration of regulatory elements and factors with gene expression data and existing genome-wide data to identify the molecular consequences of loss of SWI/SNF function in pancreatic cancer
+%\item Target validation
+%\item Differential gene expression (RNA-seq) between cells with and without SWI/SNF function
+
+\end{itemize}
+
+\pagebreak
+ 
+\section{Significance}
+ Due to the ever-decreasing cost of sequencing, a larger number of genomes and exomes from primary tumors and cancer cell lines have now been sequenced. This has led to an explosion of information regarding the underlying mutations that are associated with certain cancer types.  In addition to mutations in canonical oncogenes and tumor suppressors, chromatin modifying enzymes---including ATP-dependent chromatin remodelers---have been identified as frequently mutated in numerous types of cancer~\citep{Timp2013}.  ATP-dependent chromatin remodelers utilize ATP to disrupt DNA-histone interactions and subsequently reposition nucleosomes. Precise nucleosome positioning is critical for accessibility of the transcription machinery to promoters, thereby contributing to gene expression regulation. \emph{\color{dukeblue}Thus, chromatin remodelers have the potential to act as master regulators of transcription on a multitude of critical cell signaling pathways.}
+
+Switch/sucrose non-fermentable (SWI/SNF) is a very large ($\sim$2 MDa) ATP-dependent chromatin remodeling complex~\citep{Peterson1995} and mutations within key subunits are found across a diverse set of tumor types ({\bf \color{dukeblue}Table~I}). SWI/SNF complexes typically contain 9--12 subunits, including one of two ATPase subunits (SMARCA2 or SMARCA4), one of three specificity subunits (ARID1A, ARID1B, or PBRM1), and numerous accessory subunits (\eg, SNF5, SMARCB1). Although the characterized mutations are spread across multiple SWI/SNF subunits, they are most frequently found in the ATPase or specificity subunits~\citep{Shain2013}. The cancer type with the highest frequency of mutations within SWI/SNF subunits is the extremely aggressive early childhood malignant rhabdoid cancer~\citep{Rorke1996}, where 98\% of sequenced cell lines and primary tumor samples have mutations in the SNF5 accessory subunit~\citep{Versteege1998,Biegel1999}. SWI/SNF is also frequently mutated in K-Ras--driven pancreatic cancer, with 26\% of 70 surveyed primary tumor samples and cell lines exhibiting loss of SWI/SNF function~\citep{Shain2012}. Furthermore, decreased production of the specificity subunit PBRM1 is indicative of especially poor survival in pancreatic cancer~\citep{Numata2013}. Finally, there is increasing evidence that SWI/SNF acts as a tumor suppressor in human cancer~\citep{Shain2013,Reisman2009,Roberts2004,Shain2012}. Conditional biallelic inactivation of the SWI/SNF subunit, SNF5, leads to lymphomas and rhabdoid tumors in mice at $\sim$11 weeks~\citep{Roberts2002}; in contrast, inactivation of the tumor suppressor p53 leads to lymphomas and sarcomas in $\sim$20 weeks~\citep{Williams1994}.
+
+\begin{center}
+\begin{tabular}{l p{3cm} l}
+\textbf{Cancer}  & \textbf{Frequency of} & \textbf{Commonly mutated subunit} \\
+& \textbf{mutation/deletion} & \\
+\hline  \noalign{\smallskip}
+Malignant rhabdoid cancer~\citep{Biegel1999} & 98\% & SNF5 \\
+Ovarian clear cell carcinoma~\citep{Shain2013,Jones2010} & 75\% & ARID1A \\
+Clear cell renal cell carcinoma~\citep{Shain2013,Varela2011} & 57\% & PBRM1\\
+Hepatocellular carcinoma~\citep{Shain2013,Li2011} & 40\% & Balanced across subunits \\
+Gastric cancer~\citep{Shain2013,Wang2011} & 36\% & ARID1A \\
+Melanoma~\citep{Shain2013,Wei2011,Nikolaev2011,Stark2011} & 34\% & Balanced across subunits \\
+\textcolor{dukeblue}{\textbf{Pancreatic cancer}~\citep{Shain2013,Jones2008,Wang2011}} & \textcolor{dukeblue}{\textbf{26\%}} & \textcolor{dukeblue}{\textbf{Balanced across subunits}} \\
+Diffuse B-cell lymphoma~\citep{Shain2013,Lohr2012,Pasqualucci2011,Morin2011} & 16\% & Balanced across subunits \\
+Multiple myeloma~\citep{Shain2013,Chapman2011} & 16\% & Balanced across subunits \\
+Glioblastoma~\citep{Shain2013,Parsons2008} & 14\% & Balanced across subunits \\
+\hline
+\end{tabular}
+
+{\sffamily \color{dukeblue} \footnotesize \textbf{Table I.} Frequency of mutations/deletions within SWI/SNF subunits for a subset of various cancers.}
+
+\end{center}
+
+\section{Innovation}
+ 
+\ssheading{Technological Innovation}
+A major research challenge in cancer biology is to identify the full range of epigenetic perturbations associated with tumorigenesis and decipher how these perturbations functionally impact processes such as transcription, replication, recombination, and repair.  The local chromatin environment including transcription factor binding, histone variants, post-translational modifications of histones, and nucleosome positioning define and regulate each of these DNA-templated processes~\citep{Bernstein2012}.  Recently, genomic approaches based on next-generation sequencing have allowed researchers to begin to chart the chromatin landscape.  For example, chromatin immunoprecipitation is widely used to identify DNA elements that interact with a specific transcription factor (TF); however, this assay is limited to one profiled factor per experiment and is prone to a very high false discovery rate~\citep{Teytelman2013}. In contrast, the endonuclease DNase I can be utilized to non-specifically profile open chromatin regions in a factor agnostic manner~\citep{Boyle2008}. Micrococcal nuclease (MNase) is an endo/exonuclease which (unlike DNase I) is able to cleave linker DNA between nucleosomes and thus has been used extensively to profile nucleosome positioning throughout eukaryotic genomes (MNase-seq)~\citep{Yuan2005,Eaton2010,Gaffney2012}. \emph{\color{dukeblue}In collaboration with Steve Henikoff (FHCRC), we have recently extended MNase-seq to simultaneously characterize, at near nucleotide resolution, TF occupancy and nucleosome positioning to, in effect, `footprint' an entire eukaryotic genome~\citep{Henikoff2011}.}
+
+\begin{figure}[t!]
+\begin{center}
+\includegraphics[width=\textwidth]{figure_1_cik1_ars107.png}
+\end{center}
+\vspace{3mm}
+\caption{Locus-specific changes in chromatin occupancy captured by MNase-seq epigenome mapping. Fragment length is plotted relative to chromosome position.  {\bfseries \sffamily A}.  Recruitment of the Ste12 transcription factor to the \emph{CIK1} promoter in response to the mating pheromone $\alpha$\dash factor.  Nucleosomes ($\sim$150 bp) and individual TF binding sites ($\sim$25--100 bp) for Abf1 and Fkh1 are clearly resolvable.  Ste12 binding at the \emph{CIK1} promoter and displacement of nucleosomes are specifically observed in response to $\alpha$-factor (bottom panel).  {\bfseries \sffamily B}.  Wild type and \orcmt temperature-sensitive mutant chromatin profiles at the \emph{ARS107} locus.  The protection of small fragments at the ORC binding site is specifically lost in the \orcmt mutant at the non-permissive temperature.}
+\end{figure}
+
+Our nucleotide-resolution MNase epigenome mapping allows us to detect locus-specific changes in transcription factor occupancy and the subsequent changes in the surrounding nucleosomes. Briefly, native chromatin is digested with MNase, and all DNA fragments larger than 25 bp are recovered for preparation of next-generation paired-end sequencing. Using this approach, we are able to identify regions of protection from nucleosomes ($\sim$150 bp fragments) and smaller DNA-binding proteins (25--120 bp fragments) including transcription factors and chromatin remodeling complexes~\citep{Henikoff2011}.
+
+As a proof of principle, we have characterized changes in the chromatin landscape due to environmental perturbations (treatment with the mating pheromone $\alpha$-factor) and demonstrated the sensitivity and specificity of the approach by mutating a specific DNA-binding factor ({\bf \color{dukeblue}Figure 1}). In each panel, the lengths of the protected fragments are plotted relative to their genomic position.  Nucleosomes are clearly visible as distinct clusters of sequence fragments at approximately 150 bp, and sequences protected by bound transcription factors are resolved as smaller fragments ($<$100 bp).  In {\bf \color{dukeblue}Figure 1A}, we show the recruitment of  the Ste12 transcription factor to the \emph{CIK1} promoter and nucleosome remodeling  in response to the mating pheromone $\alpha$-factor.  In addition to the dynamic recruitment of the Ste12 transcription factor to the promoter, we also can clearly resolve the two upstream adjacent transcription factors (Abf1 and Fkh1).
+
+To confirm that the observed small fragments or `footprints' are dependent on a specific  protein, we evaluated the chromatin occupancy of the origin recognition complex (ORC) at a known origin of DNA replication \emph{ARS107} ({\bf \color{dukeblue}Figure 1B}).  In wild type cells we observed two clusters of small subnucleosomal fragments, one cluster at an annotated Abf1 transcription factor binding site and another at the annotated ORC binding site (top panel).   However, in a temperature-sensitive ORC mutant, where ORC disassociates with the DNA at the non-permissive temperature, we observed a complete loss of the footprint at the ORC binding site (bottom panel).  Importantly, only the ORC footprint and the adjacent nucleosomes were impacted in the ORC mutant, as the chromatin occupancy at the adjacent Abf1 site was unaffected.
+
+In summary, with a single experiment it is possible to identify regions of protein-DNA occupancy corresponding to both nucleosomes and site-specific DNA binding factors throughout the entire genome. \emph{\color{dukeblue}It should be stressed that this is an unbiased approach revealing changes in DNA occupancy genome-wide and that the identity of the bound protein is inferred from underlying genomic sequence matches to motifs, prior bioinformatic annotation, and the presence of unique signature MNase footprints for many transcription factors}~\citep{Henikoff2011}.
+
+\ssheading{Innovation through integration of diverse expertise}  We have assembled a very strong and interactive team with expertise in genome biology and chromatin structure (Dr.~David MacAlpine, PI), computational biology (Dr.~Alexander Hartemink, co-I), and pancreatic oncology (Dr.~Gerald Blobe; see attached letter of support).  Drs.~MacAlpine and Hartemink have extensive experience with large scale genomic data production and integrative analysis including the NHGRI's ENCODE and modENCODE consortia projects.  Importantly, our extremely close physical proximity within the campus of Duke University has promoted an intellectual and experimental synergy that will allow us to identify and decipher the molecular mechanisms by which SWI/SNF function impacts the progression and maintenance of pancreatic cancer.  
+
+\section{Approach}      	                                            	
+ 
+\sheading{Generate SWI/SNF-dependent chromatin occupancy profiles of pancreatic cancer} 
+We will use MNase epigenome mapping to generate chromatin occupancy profiles for the pancreatic cancer derived cell line, \panc. \panc was originally derived from a primary tumor and has an activating K-Ras mutation (typical of pancreatic cancer)~\citep{Deer2010}, a loss of function p53 mutation~\citep{Deer2010}, and a complete loss of SWI/SNF activity due to a frameshift mutation in SMARCA4 (and loss of the remaining allele)~\citep{Shain2012}.  SWI/SNF is frequently mutated in pancreatic cancer (26\% of nearly 70 surveyed primary tumors~\citep{Shain2012}), suggesting that chromatin remodeling and nucleosome positioning are important epigenetic modulators of Ras-driven tumorigenesis.
+
+Prior experiments from the Pollack laboratory at Stanford found that rescue of the SWI/SNF-deficient \panc cells with wild type SMARCA4, but not the catalytically dead SMARCA4\textsuperscript{K798R} mutant, led to significantly reduced proliferation and clonogenicity~\citep{Shain2012}. We will generate and compare chromatin occupancy profiles from \panc cells rescued with wild type or mutant SMARCA4 constructs to identify the SWI/SNF-dependent chromatin perturbations.  %Given that the Pollack group has already profiled the transcriptome of \panc cells rescued with either wild type SMARCA4 or the K798R mutant, we will be able to link specific changes in SWI/SNF-dependent gene expression with the corresponding locus-specific changes in chromatin structure (see below). 
+Ultimately, through our analysis, we hope to identify specific chromatin signatures associated with SWI/SNF loss of function in pancreatic cancer that can guide the discovery of future therapeutic targets.
+ 
+\ssheading{Generation of SWI/SNF-dependent chromatin occupancy profiles from \panc cells} To identify and catalog the full spectrum of SWI/SNF-dependent chromatin alterations, we will profile chromatin occupancy in \panc cells retrovirally transformed with wild type SMARCA4 or a catalytically inactive SMARCA4\textsuperscript{K798R} subunit. Chromatin occupancy profiles will be generated from independent biological replicates.  The MNase libraries from independent replicates will be barcoded and, if concordant, merged for increased sequencing depth and resolution. Retroviral expression constructs for SMARCA4 and SMARCA4\textsuperscript{K798R} are readily available (\mbox{Addgene}), and virus will be produced in 293T cells using standard packaging plasmids.  Transduced cells will be selected and maintained with puromycin in RPMI-1640 medium.  Reported proliferation and clonogenicity phenotypes will be confirmed~\citep{Shain2012}.  
+
+ \ssheading{Scaling the MNase epigenome mapping technology to the human genome} Based on our MNase chromatin mapping experiments in \scer, we expect that fewer than 500,000 cells will be required to profile the human chromatin landscape.  More critical than the starting number of cells, however, is the relative 200-fold increase in sequencing depth required to adequately cover the human genome at a depth similar to our \scer chromatin profiles ($\sim$20 million mappable paired-end reads) ({\bfseries\color{dukeblue}Table II}).   We currently estimate that it will require $\sim$5 billion paired-end reads to generate a comprehensive chromatin occupancy profile in the \panc cell line.  As a proof of principle, we have already scaled the technology to the \dros genome, representing a 13-fold increase in coverage over yeast ({\bfseries\color{dukeblue}Figure 2}). 
+
+With technology and pricing currently available at Duke (Illumina HiSeq 2500), we estimate that it will cost around \$26,000 to obtain 5 billion paired-end reads throughout the human genome ({\bfseries\color{dukeblue}Table II}).  While this may seem like an expensive proposition, we note the still rapidly decreasing cost of sequencing~\citep{Hayden2014} and the fervent pace of research towards the holy grail of the \$1,000 genome.  We fully expect that by the end of this project it will cost less than \$10,000 to generate a comprehensive nucleotide-resolution chromatin occupancy profile across the human genome.   
+
+\begin{center}
+\begin{tabular}{l r r r}
+\textbf{Organism} & \textbf{Genome Size} & \textbf{Sequencing Depth} & \textbf{Sequencing Cost} \\
+& \textbf{(Mb)} & \textbf{(millions of reads)} & \textbf{(HiSeq 2500)}\\
+\hline \noalign{\smallskip}
+\scer & 12.2 & 20 & \$ \space\space\space\space\space\space 100\\
+\dros & 168.7 & 277 & \$ \space\space\space 1,384	\\
+Human & 3,137.2 & 5,143 & \$ \space 25,697\\
+\hline
+\end{tabular}
+
+\vspace{0.2cm}
+\mbox{
+\parbox{\textwidth}{
+{\color{dukeblue} \sffamily \footnotesize \textbf{Table II.}} \footnotesize \sffamily \color{dukeblue} Sequencing cost by genome size. We estimate that $\sim$5 billion paired-end fragments will be sufficient to profile the chromatin occupancy of the human genome at a similar resolution as our pilot \scer and \dros experiments. Each independent biological replicate will be sequenced at half this depth ($\sim$2.5 billion paired-end fragments) and merged if concordant.}
+}
+\end{center}
+
+\ssheading{Generation of SWI/SNF-dependent transcription profiles}
+A major goal of this project is to link specific SWI/SNF-dependent changes in chromatin structure to altered gene transcription in pancreatic cancer.  In parallel to the MNase-seq epigenome mapping, we will also use RNA-seq to profile gene expression from \panc cells rescued with wild type SMARCA4 or the catalytically dead SMARCA4\textsuperscript{K798R} subunit.  We will link specific changes in SWI/SNF-dependent gene expression with the corresponding locus-specific changes in chromatin structure.  By focusing on chromatin perturbations in the vicinity of genes impacted by loss of SWI/SNF function, we can identify new regulatory features and pathways associated with pancreatic cancer that may ultimately serve as novel therapeutic targets.  
+
+\ssheading{Caveats and potential pitfalls}
+A potential concern is the inherent sequence bias of MNase for specific di-nucleotide combinations~\citep{Dingwall1981}.  We do not believe these biases will impact the resolution of our data or the interpretation for the following reasons: i) the footprints and nucleosome positioning we observe are maintained even with increasing MNase concentrations~\citep{Henikoff2011}; ii) the footprints we observe are specific for motifs that are occupied by the protein target and do not occur at random motif matches; iii) we can computationally correct for the sequence bias and in many cases this provides additional confidence in whether a region is protected or not.  
+\sidecaptionvpos{figure}{c}
+
+\begin{SCfigure}[\sidecaptionrelwidth][h!]
+	\includegraphics[width=0.75\textwidth, keepaspectratio]{figure_2_dros.png}
+\caption{MNase epigenome mapping in \dros reveals chromatin architecture at a single locus.  We can detect nucleosomes and DNA binding proteins at nucleotide resolution across the \dros genome from an approximate sequencing depth of 250 million paired-end fragments.}
+\end{SCfigure}
+
+The MacAlpine group has clear and demonstrable expertise in the development and use of genomic approaches to survey chromatin landscape.  However, despite our work on a number of eukaryotic model systems, a possible concern is our limited experience with mammalian cell culture.  We do not believe that mammalian cell culture will be a significant obstacle.  Our laboratory is in the Department of Pharmacology and Cancer Biology at Duke and we will seek out knowledge and expertise from our colleagues engaged in mammalian cancer research. Not only will we seek advice from  Dr.~Gerald Blobe (a physician scientist specializing in gastrointestinal cancer; see letter of support), but we also have a proven track record of collaboration with Dr.~Christopher Counter (Ras-mediated oncogenesis)~\citep{Lampson2013},  and finally, the MacAlpine laboratory is adjacent to the laboratory of Dr.~Mike Kastan (Director of the Duke Cancer Institute).  Thus, we are extremely well-positioned to capitalize on the  technical and intellectual expertise of our colleagues to ensure the success of this project. 
+
+
+\sheading{Identify regulatory elements with SWI/SNF-dependent altered chromatin occupancy}
+A major research focus of our group is to define the functional relationships between structural elements in chromatin (binding of transcription factors, chromatin remodelers, and changes in nucleosome positioning) and how these define the DNA replication and transcriptional programs~\citep{Wasson2009,MacAlpine2010,Eaton2010}.  Here, we will apply our computational and bioinformatics expertise to identify SWI/SNF-dependent chromatin configurations, infer the identity of specific transcription factors that may be recruited or evicted in a SWI/SNF-dependent manner, and link these changes in chromatin structure to altered gene expression ({\bfseries\color{dukeblue}Figure 3}).  \emph{\color{dukeblue}We are focusing on chromatin occupancy (DNA binding events) rather than chromatin state (histone modifications, DNA methylation) because changes in chromatin state precipitate changes in chromatin occupancy (\eg, recruitment or eviction of transcription factors or RNA Pol II) that ultimately impact gene expression.}
+
+\ssheading{Identification of SWI/SNF-dependent altered chromatin occupancy} Differences in chromatin occupancy between SWI/SNF-deficient \panc cells that have been rescued with either wild type SMARCA4 or the catalytically dead SMARCA4\textsuperscript{K798R} mutant will be determined using a novel statistical framework developed in collaboration with Alexander Hartemink (Co-I) and Li Ma (Duke, Statistics).  Currently, we can readily identify and classify locus-specific changes (including nucleosome displacement and TF recruitment or eviction); however, it is challenging to computationally identify, classify, and assign probabilistic estimates to more subtle changes in chromatin occupancy that may, for example, occur in an allele-specific manner.   We are currently working to implement and scale a novel Markov model developed by the Ma group~\citep{Soriano2014} that recursively partitions the underlying data at multiple resolutions.   This will provide a statistically robust and comprehensive identification of chromatin occupancy changes associated with SWI/SNF function in pancreatic cancer.
+
+\begin{SCfigure}[\sidecaptionrelwidth][b!]
+	\includegraphics[width=0.7\textwidth, keepaspectratio]{figure_3_flow_chart.png}
+\caption{Schematic representation of proposed computational analyses to identify SWI/SNF-dependent regulatory elements.}
+\end{SCfigure}
+
+
+\iffalse 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=\textwidth]{figure_3_flow_chart.png}
+\end{center}
+\vspace{3mm}
+\caption{Flow chart}
+\end{figure}
+\fi
+
+\ssheading{Integration of SWI/SNF-dependent chromatin occupancy with existing genomic data} 
+The SWI/SNF ATP-dependent chromatin remodeler is able to alter the accessibility of potentially thousands of DNA regulatory elements throughout the the human genome via its ability to reposition nucleosomes.   Perturbations in DNA accessibility will result in the recruitment or eviction of specific DNA-binding factors, including transcription factors, which will likely have profound consequences on gene expression.  The chromatin occupancy profiles we generate simply provide information on what sequences in the genome are associated with protein factors.  We need to use additional genomic data (including motif analysis, genome annotation, and transcription factor mapping) to computationally infer the identity and function of the factors associated with these sequences.
+ 
+To identify regulatory factors and sequences impacted by SWI/SNF loss of function in pancreatic cancer, we will integrate our findings with existing NHGRI ENCODE (Encyclopedia of DNA Elements) data.  In the course of the ENCODE project, thousands of datasets have been generated that describe the transcriptome (coding and non-coding RNA), the genome-wide location of hundreds of DNA binding factors, chromatin modifications, nucleosome positioning, and DNA methylation for the human, mouse, fly and worm genomes.  To this end we are extremely well positioned to integrate this data having worked with the NHGRI ENCODE consortium (MacAlpine and Hartemink) and also having been a model organism ENODE data production laboratory (as well as a co-PI of the model organism ENCODE Data Analysis Center) (MacAlpine).  Importantly, we have the computational infrastructure and tools already in place for the proposed analyses.  
+
+\ssheading{Integration of SWI/SNF-dependent chromatin occupancy with gene expression data} 
+SWI/SNF-dependent chromatin configurations potentially regulate thousands of diverse genes. Thus, it is critical that we begin to understand the underlying cascade of chromatin-mediated changes that lead to altered transcription in pancreatic cancer.   We will use the RNA-seq data generated in the first aim to identify differentially expressed genes between \panc cells rescued with the wild type SMARCA4 vs.\ the catalytically inactive SMARCA4\textsuperscript{K798R} mutant.  The identification of differentially expressed genes will guide our search for regulatory DNA elements and DNA binding factors with SWI/SNF-dependent chromatin occupancy.  For each differentially expressed gene, we hope to identify the specific regulatory factors responsible for the altered transcription.  The power of our proposed approach is that we will be able to probe inside the `black box' of chromatin-mediated transcriptional regulation. Specifically, we can precisely ascertain the chromatin landscape around affected genes, and link these chromatin states to downstream expression consequences. Finally, these data will also be coupled together into pathways and networks, more holistically describing the chromatin-mediated transcriptional consequences of loss of SWI/SNF chromatin remodeling in pancreatic cancer.
+
+\ssheading{Caveats and potential pitfalls}
+A potential concern is that although we will identify differences in chromatin occupancy between \panc cells rescued with wild type or a catalytically dead subunit of SMARCA4, it may be difficult to directly link differences in chromatin occupancy to the differential expression of specific genes.  Unlike the compact yeast genome, mammalian genomes contain both local regulatory elements (promoters) and distal regulatory elements (enhancers) that can modulate gene expression.  We do not anticipate difficulty in identifying chromatin differences at gene-specific promoters; however, it will be difficult to assign differences in chromatin occupancy at distal enhancers to specific genes. Nonetheless, a comprehensive identification of enhancers with SWI/SNF-dependent chromatin occupancy will undoubtedly provide molecular insights into the mechanisms by which chromatin remodeling modulates Ras-driven pancreatic cancer.
+
+\sheading{Summary and Timeline}
+Loss of SWI/SNF function is associated with more than a quarter of Ras-driven pancreatic cancer, suggesting that it is an important epigenetic modulator and potential suppressor of tumorigenesis.  As an ATP-dependent chromatin remodeler, SWI/SNF loss of function may impact the expression of a multitude of genes and numerous key cellular signaling pathways.  It is important to identify not just genes whose expression is altered in the absence of SWI/SNF, but also the primary chromatin consequences of loss of SWI/SNF function---namely the regulatory elements and factors whose chromatin occupancy is altered.  We will scale our MNase epigenome mapping to the human genome to comprehensively identify SWI/SNF-dependent perturbations in chromatin structure from \panc cells.  The technology is robust and we have demonstrated its application to both the \scer and \dros genome.  In year one, we will generate \panc cell lines retrovirally transformed with wild type and mutant subunits of SMARCA4, optimize the chromatin isolation, generate paired-end libraries for the MNase-seq and RNA-seq experiments, and sequence the libraries to the required depth.  In year two, we will focus on the computational analysis and bioinformatics to identify critical regulatory elements and factors whose chromatin occupancy is altered in the absence of SWI/SNF function.   
+
+\pagebreak
+
+\sheading{Data and Resource Sharing}
+We are committed to making all our sequencing data publicly available on the UCSC genome browser and other data repositories, including the NCBI GEO data repository. Being a part of the modENCODE project consortium, we have an extensive track record of making all our data public, and have already developed the experience and submission pipelines for doing so. Similarly, we have a long-standing commitment to make available for download all of our software (including full source code) for analyses and performing statistical inference. These have been downloaded from our websites by many thousands of individuals from around 120 different countries. We are committed to continuing our policy of publicly releasing and sharing with the community for evaluation our software and algorithms. This sharing will facilitate further methods development as well as application to data from other eukaryotic genomes.
+					
+In summary, we are committed to respecting community data and software sharing principles, to enable reproducible science and to facilitate more rapid advances in the field.		
+
+\pagebreak
+
+% Bibliography
+% \bibliographystyle{plainnat}
+\bibliographystyle{alexunsrtabbrvnat}
+\bibliography{Chromatin_cancer_library_formatted,r21_formatted_2}
+
+\end{document}
+
+
+
+
