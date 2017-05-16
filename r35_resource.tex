@@ -2,8 +2,8 @@
 \renewcommand \thesection{\Alph{section}}
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-{-0.1ex \@plus -1ex \@minus -.2ex}%
-{0.1ex \@plus.2ex}%
+{-1.5ex \@plus -1ex \@minus -.2ex}%
+{1.5ex \@plus.2ex}%
 {\color{dukeblue}\sffamily\Large\bfseries}}
 \makeatother
 
@@ -20,8 +20,8 @@
 \usepackage[numbers,super,comma,sort&compress]{natbib}
 \usepackage{multirow}
 \usepackage{xspace}
-\usepackage[scaled=.99]{helvet}
-%\usepackage{helvet}
+%\usepackage[scaled]{helvet}
+\usepackage{helvet}
 
 \usepackage[rightcaption]{sidecap}
 \usepackage{calc}
@@ -116,7 +116,9 @@
 \addtolength{\itemsep}{-5mm}
 \addtolength{\parskip}{1.5mm}
 \addtolength{\abovecaptionskip}{-10mm}
-\input{r35_1_background_2.tex}
-\input{r35_2_progress.tex}
-\input{r35_3_future.tex}
+%\input{r35_1_background_2.tex}
+%\input{r35_2_progress.tex}
+%\input{r35_3_future.tex}
+\section*{Resource Sharing Plans}
+We are committed to openly share the data and resources developed in the course of this project.  Genomic data will be disseminated in publicly available repositories (\eg NCBI GEO).  Software developed in the project will be shared using GitHub.  Protocols will be distributed via Protocol Exchange and the investigator's web site.  All cell lines, strains and plasmid constructs will be provided upon request.
 \end{document}

@@ -2,8 +2,8 @@
 \renewcommand \thesection{\Alph{section}}
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-{-0.1ex \@plus -1ex \@minus -.2ex}%
-{0.1ex \@plus.2ex}%
+{-1.5ex \@plus -1ex \@minus -.2ex}%
+{1.5ex \@plus.2ex}%
 {\color{dukeblue}\sffamily\Large\bfseries}}
 \makeatother
 
@@ -20,8 +20,8 @@
 \usepackage[numbers,super,comma,sort&compress]{natbib}
 \usepackage{multirow}
 \usepackage{xspace}
-\usepackage[scaled=.99]{helvet}
-%\usepackage{helvet}
+%\usepackage[scaled]{helvet}
+\usepackage{helvet}
 
 \usepackage[rightcaption]{sidecap}
 \usepackage{calc}
@@ -116,7 +116,9 @@
 \addtolength{\itemsep}{-5mm}
 \addtolength{\parskip}{1.5mm}
 \addtolength{\abovecaptionskip}{-10mm}
-\input{r35_1_background_2.tex}
-\input{r35_2_progress.tex}
-\input{r35_3_future.tex}
+%\input{r35_1_background_2.tex}
+%\input{r35_2_progress.tex}
+%\input{r35_3_future.tex}
+\section*{Abstract}
+Our research is focused on elucidating the mechanisms by which the local chromatin environment influences DNA-templated processes including DNA replication, transcription and DNA repair.  While considerable progress has been made in our understanding of the mechanisms that direct DNA replication \invitro, we know very little about how start sites of DNA replication (origins) are selected and regulated in the context of the chromosome.  The genomic approaches that my research group have pioneered have provided new insights into the mechanisms by which the local chromatin state and structure (nucleosome and transcription factor occupancy) influences key steps in regulating the DNA replication program in multiple species including \scer and \dros.  We have recently developed a novel approach to `footprint' a eukaryotic genome -- simultaneously revealing genome-wide occupancy of DNA for both nucleosomes and smaller DNA binding factors (\eg initiation and transcription factors).  Unlike biochemical reconstitution experiments utilizing one or two defined DNA templates, we are able to comprehensively view the cell cycle regulated cascade of chromatin changes that occur surrounding each origin of replication in the yeast genome.  Our future research will focus on identifying and characterizing the chromatin mediated events required for initiation of DNA replication following helicase loading.  We will also investigate how chromatin structure is re-established throughout the genome to preserve epigenetic integrity following passage of the DNA replication fork.  DNA replication is also a potent source of double-stranded breaks (DSB) which, if not repaired, may lead to genomic instability.  We are uniquely positioned to identify and understand the dynamics of chromatin structure following the induction of site-specific DSBs and their subsequent repair by homologous recombination or non-homologous end joining. Finally, in collaboration with the Hartemink laboratory (Duke, CS) we are using synchronous populations of yeast proceeding through the cell cycle to develop robust statistical approaches that will enable us to model cell cycle-dependent changes in gene expression from chromatin occupancy data. 
 \end{document}
