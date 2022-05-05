@@ -42,6 +42,8 @@
 % Bibliography
 %\bibpunct[,]{~[}{]}{,}{n}{}{}
 \bibliographystyle{alexunsrtabbrvnat}
+%\bibliography{paperpile_2022}
+
 % \setlength\bibsep{1.8pt}
 \renewcommand{\refname}{Literature~Cited}
 
@@ -75,6 +77,8 @@
 
 \def\sheading#1{\medskip\noindent\refstepcounter{sheading}{\sffamily \color{dukeblue} \large \textbf{\Alph{section}.\arabic{sheading}\hspace{1em}#1}\medskip\setcounter{ssheading}{0}}\\}
 
+%trying to remove the counter
+\def\bheading#1{\medskip\noindent\refstepcounter{sheading}{\sffamily \color{dukeblue} \large \textbf{#1}\medskip\setcounter{ssheading}{0}}\\}
 
 %\def\ssheading#1{\noindent\refstepcounter{ssheading}{\sffamily \color{dukeblue} \bfseries \textsl {\Alph{section}.\arabic{sheading}.\arabic{ssheading}\hspace{1em}#1}\hspace{.7em}}}
 
@@ -99,7 +103,10 @@
 \newcommand\ten[1]{$\times$10$^{#1}$}
 \newcommand\panc{Panc\dash1\xspace}
 \newcommand\orcmt{\emph{orc1\dash 161}\xspace}
-
+\newcommand\cac{\emph{cac1$\Delta$}\xspace}
+\newcommand\CAC{\emph{CAC1}\xspace}
+\newcommand\bas{\emph{bas1$\Delta$}\xspace}
+\newcommand\BAS{\emph{BAS1}\xspace}
 % Other Abbreviations
 \newcommand\eg{\emph{e.g.}\xspace}
 \newcommand\dash{\nobreakdash-\hspace{0pt}}
@@ -116,7 +123,36 @@
 \addtolength{\itemsep}{-5mm}
 \addtolength{\parskip}{1.5mm}
 \addtolength{\abovecaptionskip}{-10mm}
+
+
+\input{r35_abstract}
+\newpage
+\input{r35_authentication}
+\newpage
+\input{r35_narrative}
+\newpage
+\input{r35_resource}
+%\input{r35_update.tex}
+\newpage
 \input{r35_1_background_2.tex}
-\input{r35_2_progress.tex}
-\input{r35_3_future.tex}
+% \input{r35_2_progress.tex}
+\newpage
+\input{r35_renewal_progress_2}
+
+%\input{r35_3_future.tex}
+\input{r35_renewal_future_3}
+\newpage
+\bibliography{paperpile_2022_pmcid}
+\newpage
+\input{r35_resource.tex}
+\newpage
+\input{r35_authentication.tex}
+\newpage
+\input{r35_renewal_budget}
+\newpage
+\input{r35_publication_list}
+\newpage
+\input{r35_facilities}
+\newpage
+\input{r35_equipment}
 \end{document}
